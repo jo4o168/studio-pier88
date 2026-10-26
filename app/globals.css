@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta da logo: preto, off-white e o amarelo #f8c800 só como acento. */
+  --color-ink: #000000;
+  --color-ink-2: #121212;
+  --color-paper: #f3f3f1;
+  --color-stone: #9a9a96;
+  --color-line: #262626;
+  --color-brass: #f8c800;
+
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --header-h: 72px;
+  --subnav-h: 56px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-brass);
+  color: var(--color-ink);
+}
+
+/* Seções alcançadas pelas subabas param abaixo do header + submenu */
+.anchor {
+  scroll-margin-top: calc(var(--header-h) + var(--subnav-h) + 24px);
+}
+
+/* Animação de entrada usada pelo componente <Reveal> */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .brand-marquee-track { animation: none; }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.brand-marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+.group:hover .brand-marquee-track {
+  animation-play-state: paused;
+}
+
+.brand-marquee-fade {
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
