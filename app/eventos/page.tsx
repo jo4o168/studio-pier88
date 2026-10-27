@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import SubNav from "@/components/SubNav";
 import Reveal from "@/components/Reveal";
-import { eventos } from "@/lib/content";
+import { capas, eventos } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Eventos · Studio Pier 88" };
 
@@ -15,7 +15,7 @@ export default function EventosPage() {
         title="Lançamentos, desfiles"
         italic="e exposições."
         text="Nossos espaços já receberam eventos de algumas das maiores marcas do mundo. Conheça alguns deles."
-        image={eventos[3].img}
+        image={capas.eventos}
       />
       <SubNav items={eventos.map((e) => ({ id: e.id, label: e.nome }))} />
 

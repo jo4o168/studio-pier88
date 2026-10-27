@@ -32,13 +32,21 @@ export const nav = [
   { href: "/contato", label: "Contato" },
 ];
 
-export const heroImages = [
-  `${UP}/20189517418714.jpg`,
-  `${UP}/20189517611608.jpg`,
-  `${UP}/201895165718238.jpg`,
-  `${UP}/201895165736649.jpg`,
-  `${UP}/201895165855213.jpg`,
-];
+// Capas dos menus: só o estúdio vazio, sem marca nem evento.
+export const capas = {
+  home: [
+    "/images/capas/mezanino.jpg",
+    "/images/capas/producao.jpg",
+    "/images/capas/ciclorama-largo.jpg",
+    "/images/capas/camarim-entrada.jpg",
+  ],
+  eventos: "/images/capas/estudio-vazio.jpg",
+  studio: "/images/capas/ciclorama.jpg",
+  equipamentos: "/images/capas/iluminacao.jpg",
+  quemSomos: "/images/capas/camarim.jpg",
+};
+
+export const heroImages = capas.home;
 
 export const estudios = [
   { id: "estudio-01", nome: "Estúdio 01", img: `${UP}/Min/202341412921649.jpg` },
@@ -56,16 +64,16 @@ export const estudios = [
 }));
 
 export const eventos = [
-  { id: "naty-edenburg", nome: "Exposição Naty Edenburg", sub: "How do I feel today", img: `${UP}/Min/2016122181445521.jpg` },
-  { id: "motorola", nome: "Motorola", sub: "Evento corporativo", img: `${UP}/Min/2016122182645192.jpg` },
-  { id: "iodice", nome: "Iódice", sub: "Desfile", img: `${UP}/Min/2016122183013856.jpg` },
-  { id: "google", nome: "Google", sub: "Partner Weekend", img: `${UP}/Min/2016122184135715.jpg` },
-  { id: "ibm", nome: "IBM", sub: "Evento corporativo", img: `${UP}/Min/2017623154818896.JPG` },
-  { id: "lg", nome: "LG", sub: "Lançamento de TV", img: `${UP}/Min/201762316011402.jpg` },
-  { id: "youtube", nome: "YouTube", sub: "Evento", img: `${UP}/Min/20178417223439.jpg` },
-  { id: "volvo", nome: "Volvo", sub: "Evento", img: `${UP}/Min/201792116919514.JPG` },
-  { id: "atento", nome: "Atento", sub: "Evento corporativo", img: `${UP}/Min/201882917053883.JPG` },
-  { id: "jequiti", nome: "Jequiti", sub: "Evento", img: `${UP}/Min/2018829171818560.jpg` },
+  { id: "motorola", nome: "Motorola", sub: "Lançamento do Moto G", img: "/images/eventos/motorola.jpg" },
+  { id: "colgate", nome: "Colgate", sub: "Lançamento", img: "/images/eventos/colgate.jpg" },
+  { id: "amazon", nome: "Amazon", sub: "Black Friday", img: "/images/eventos/amazon.jpg" },
+  { id: "loreal", nome: "L'Oréal Paris", sub: "Ativação", img: "/images/eventos/loreal.jpg" },
+  { id: "lacta", nome: "Lacta", sub: "Lacta Intense", img: "/images/eventos/lacta.jpg" },
+  { id: "nivea", nome: "Nivea", sub: "Ativação", img: "/images/eventos/nivea.jpg" },
+  { id: "volvo", nome: "Volvo", sub: "Exposição", img: "/images/eventos/volvo.jpg" },
+  { id: "ibm", nome: "IBM", sub: "Watson Developer Summit", img: "/images/eventos/ibm.jpg" },
+  { id: "atento", nome: "Atento", sub: "Atento + Digital", img: "/images/eventos/atento.jpg" },
+  { id: "nudestix", nome: "Nudestix", sub: "Evento", img: "/images/eventos/nudestix.jpg" },
 ];
 
 export const equipamentos = [
@@ -74,6 +82,6 @@ export const equipamentos = [
   { id: "grip", nome: "Tripés e grip", itens: ["A DEFINIR", "A DEFINIR"] },
   { id: "audio-video", nome: "Áudio e vídeo", itens: ["A DEFINIR", "A DEFINIR"] },
 ];
-export const equipamentosImg = `${UP}/Min/202341016178630.jpg`;
+export const equipamentosImg = capas.equipamentos;
 
 export const clientes = ["Google", "YouTube", "Motorola", "IBM", "LG", "Volvo", "Jequiti", "Atento", "Iódice"];

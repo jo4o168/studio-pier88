@@ -121,7 +121,7 @@ export default function Home() {
             </h2>
           </Reveal>
           <ul>
-            {eventos.slice(0, 6).map((ev) => (
+            {eventos.map((ev) => (
               <li key={ev.id}>
                 <Link
                   href={`/eventos#${ev.id}`}

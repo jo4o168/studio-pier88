@@ -4,7 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import SubNav from "@/components/SubNav";
 import Reveal from "@/components/Reveal";
-import { estudios } from "@/lib/content";
+import { capas, estudios } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Studio · Studio Pier 88" };
 
@@ -21,7 +21,7 @@ export default function StudioPage() {
         title="Seis estúdios,"
         italic="infinitas possibilidades."
         text="Espaços amplos e independentes, com luz natural e estrutura pensada para produções de moda, publicidade e conteúdo."
-        image={estudios[0].img}
+        image={capas.studio}
       />
       <SubNav items={items} />
 

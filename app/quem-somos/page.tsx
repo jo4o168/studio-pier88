@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import SubNav from "@/components/SubNav";
 import Reveal from "@/components/Reveal";
-import { heroImages } from "@/lib/content";
+import { capas } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Quem Somos · Studio Pier 88" };
 
@@ -20,7 +20,7 @@ export default function QuemSomosPage() {
         kicker="Quem somos"
         title="Nascemos"
         italic="no mundo da moda."
-        image={heroImages[2]}
+        image={capas.quemSomos}
       />
       <SubNav
         items={[
