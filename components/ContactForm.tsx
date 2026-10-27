@@ -12,6 +12,25 @@ type Dados = {
   mensagem: string;
 };
 
+/** (11) 99999-9999 no celular, (11) 9999-9999 no fixo. O DDD fecha os parênteses ao segundo dígito. */
+function formatarTelefone(valor: string) {
+  let digitos = valor.replace(/\D/g, "");
+  if (digitos.length > 11 && digitos.startsWith("55")) digitos = digitos.slice(2);
+  digitos = digitos.slice(0, 11);
+
+  const ddd = digitos.slice(0, 2);
+  const resto = digitos.slice(2);
+  if (digitos.length === 0) return "";
+  if (digitos.length < 2) return `(${ddd}`;
+  if (resto.length === 0) return `(${ddd}) `;
+
+  const celular = resto.startsWith("9") || resto.length > 8;
+  const bloco = celular ? 5 : 4;
+  const primeira = resto.slice(0, bloco);
+  const segunda = resto.slice(bloco, bloco + 4);
+  return segunda ? `(${ddd}) ${primeira}-${segunda}` : `(${ddd}) ${primeira}`;
+}
+
 function origemWhatsApp(d: Dados) {
   if (d.origem === formularioContato.origemOutro && d.origemOutro.trim()) {
     return d.origemOutro.trim();
@@ -53,6 +72,17 @@ export default function ContactForm() {
   const set = (k: keyof Dados) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setD((s) => ({ ...s, [k]: e.target.value }));
 
+  const aoDigitarTelefone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const digitado = e.target.value;
+    let digitos = digitado.replace(/\D/g, "");
+    const anteriores = d.telefone.replace(/\D/g, "");
+    // Apagar um parêntese, espaço ou hífen remove o último número, em vez de travar a máscara.
+    if (digitos === anteriores && digitado.length < d.telefone.length) {
+      digitos = digitos.slice(0, -1);
+    }
+    setD((s) => ({ ...s, telefone: formatarTelefone(digitos) }));
+  };
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const url = `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(montarMensagem(d))}`;
@@ -76,7 +106,16 @@ export default function ContactForm() {
       </div>
       <div>
         <label className={label} htmlFor="telefone">Telefone</label>
-        <input id="telefone" value={d.telefone} onChange={set("telefone")} className={field} placeholder="(11) 90000-0000" />
+        <input
+          id="telefone"
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel"
+          value={d.telefone}
+          onChange={aoDigitarTelefone}
+          className={field}
+          placeholder="(11) 99999-9999"
+        />
       </div>
       <div>
         <label className={label} htmlFor="origem">Como nos conheceu?</label>

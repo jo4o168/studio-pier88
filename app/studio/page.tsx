@@ -50,7 +50,7 @@ export default function StudioPage() {
                 </div>
               </dl>
               <Link href="/contato" className="self-start border-b border-paper/50 pb-1 text-[12px] tracking-[0.25em] uppercase hover:border-paper">
-                Reservar este estúdio →
+                Falar sobre este estúdio →
               </Link>
             </Reveal>
           </section>

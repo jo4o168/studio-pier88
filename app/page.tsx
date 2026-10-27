@@ -31,7 +31,7 @@ export default function Home() {
                 href="/contato"
                 className="inline-flex items-center gap-4 self-start rounded-full border border-paper/40 px-8 py-4 text-[12px] tracking-[0.25em] uppercase transition-colors hover:border-paper hover:bg-paper hover:text-ink"
               >
-                Faça sua reserva <span>→</span>
+                Entre em contato <span>→</span>
               </Link>
             </div>
           </Reveal>
