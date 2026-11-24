@@ -9,12 +9,9 @@ export const metadata: Metadata = { title: "Contato · Studio Pier 88" };
 export default function ContatoPage() {
   return (
     <>
-      <section className="mx-auto max-w-7xl px-5 pb-16 pt-[calc(var(--header-h)+80px)] md:px-10">
+      <section className="mx-auto max-w-7xl px-5 pt-16 pb-10 md:px-10 md:pt-20">
         <Reveal>
-          <p className="mb-5 text-[12px] tracking-[0.35em] uppercase text-brass">Contato</p>
-          <h1 className="font-display text-7xl leading-[0.9] md:text-9xl">
-            Vamos <em>conversar.</em>
-          </h1>
+          <h1 className="font-serif text-6xl leading-none font-medium md:text-8xl">Vamos conversar.</h1>
         </Reveal>
       </section>
       <SubNav items={[{ id: "formulario", label: "Formulário" }]} />
@@ -22,10 +19,10 @@ export default function ContatoPage() {
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <section id="formulario" className="anchor grid gap-16 py-20 md:grid-cols-12 md:py-28">
           <Reveal className="md:col-span-4">
-            <p className="font-display text-3xl leading-snug">
-              Conte sobre a sua produção e retornamos com <em className="text-brass">disponibilidade</em> e valores.
+            <p className="font-serif text-3xl leading-snug">
+              Conte sobre a sua produção e retornamos com disponibilidade e valores.
             </p>
-            <div className="mt-10 space-y-2 text-sm text-paper/70">
+            <div className="mt-10 space-y-2 font-serif text-lg">
               {contato.telefones.map((t) => <p key={t}>{t}</p>)}
               <p>WhatsApp {contato.whatsappLabel}</p>
               <p>{contato.email}</p>

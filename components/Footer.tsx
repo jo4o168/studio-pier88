@@ -4,48 +4,41 @@ import { contato, nav } from "@/lib/content";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-ink">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-4 md:px-10">
-        <div className="md:col-span-2">
-          <img src="/brand/logo.png" alt="Studio Pier 88" className="h-14 w-auto md:h-16" />
-          <p className="mt-6 max-w-sm text-sm leading-relaxed text-stone">
-            Estúdios para fotografia, filmagem e eventos. Inspirado em Nova York, feito em São Paulo.
-          </p>
-        </div>
-        <div className="text-sm leading-7 text-paper/70">
-          <p className="mb-3 text-[11px] tracking-[0.3em] uppercase text-brass">Visite</p>
-          <p>{contato.endereco}</p>
-          <p>{contato.bairro}</p>
-          <p>CEP {contato.cep}</p>
-        </div>
-        <div className="text-sm leading-7 text-paper/70">
-          <p className="mb-3 text-[11px] tracking-[0.3em] uppercase text-brass">Fale com a gente</p>
-          {contato.telefones.map((t) => (
-            <p key={t}>{t}</p>
-          ))}
-          <a href={`https://wa.me/${contato.whatsapp}`} className="block hover:text-paper">
+    <footer className="bg-[#8d8d8d] text-black">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-5 px-6 py-16 text-center">
+        <img src="/brand/logo-header.png" alt="Studio Pier 88" className="h-16 w-auto md:h-20" />
+        <p className="font-serif text-lg leading-relaxed">
+          {contato.endereco}
+          <br />
+          {contato.bairro}
+          <br />
+          CEP {contato.cep}
+        </p>
+        <p className="font-serif text-lg">
+          {contato.telefones.join(" · ")}
+          <br />
+          <a href={`https://wa.me/${contato.whatsapp}`} className="underline-offset-4 hover:underline">
             WhatsApp {contato.whatsappLabel}
           </a>
-          <a href={`mailto:${contato.email}`} className="block hover:text-paper">
+          <br />
+          <a href={`mailto:${contato.email}`} className="underline-offset-4 hover:underline">
             {contato.email}
           </a>
-          <div className="mt-3 flex gap-5">
-            <a href={contato.instagram} className="hover:text-paper">Instagram</a>
-            <a href={contato.facebook} className="hover:text-paper">Facebook</a>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-line">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-6 text-[11px] tracking-[0.2em] uppercase text-stone md:flex-row md:items-center md:justify-between md:px-10">
-          <p>© {new Date().getFullYear()} Studio Pier 88</p>
-          <ul className="flex flex-wrap gap-5">
-            {nav.map((n) => (
-              <li key={n.href}>
-                <Link href={n.href} className="hover:text-paper">{n.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        </p>
+        <ul className="mt-2 flex flex-wrap justify-center gap-x-6 gap-y-2 font-sans text-[12px] uppercase tracking-[0.14em]">
+          {nav.map((item) => (
+            <li key={item.href}>
+              <Link href={item.href} className="hover:opacity-60">
+                {item.label}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <a href={contato.instagram} className="hover:opacity-60">
+              Instagram
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   );

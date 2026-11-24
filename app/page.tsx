@@ -1,157 +1,83 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import HeroSlideshow from "@/components/HeroSlideshow";
 import BrandMarquee from "@/components/BrandMarquee";
-import Reveal from "@/components/Reveal";
-import { estudios, eventos, heroImages } from "@/lib/content";
+import CyclingPhotos from "@/components/CyclingPhotos";
+import { heroImages, manifesto } from "@/lib/content";
+
+const btn = "inline-block bg-black px-7 py-3 font-sans text-[12px] font-medium tracking-[0.16em] uppercase text-white hover:bg-neutral-800";
 
 export default function Home() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative flex h-[100dvh] min-h-[640px] items-end overflow-hidden">
+      <section className="relative flex h-[100dvh] min-h-[560px] items-end justify-center overflow-hidden">
         <HeroSlideshow images={heroImages} />
-        <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 md:px-10 md:pb-28">
-          <Reveal>
-            <p className="mb-6 text-[12px] tracking-[0.35em] uppercase text-brass">
-              Vila Leopoldina · São Paulo
-            </p>
-            <h1 className="font-display text-[15vw] leading-[0.88] md:text-[9rem] lg:text-[11rem]">
-              Espaço para
-              <br />
-              <em className="text-paper/85">criar sem limite.</em>
-            </h1>
-          </Reveal>
-          <Reveal delay={200}>
-            <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-              <p className="max-w-md text-base leading-relaxed text-paper/70">
-                Estúdios para fotografia, filmagem e eventos, inspirados nos grandes estúdios de Nova York.
-              </p>
-              <Link
-                href="/contato"
-                className="inline-flex items-center gap-4 self-start rounded-full border border-paper/40 px-8 py-4 text-[12px] tracking-[0.25em] uppercase transition-colors hover:border-paper hover:bg-paper hover:text-ink"
-              >
-                Entre em contato <span>→</span>
-              </Link>
-            </div>
-          </Reveal>
+        <div className="pointer-events-none relative z-10 w-full px-5 pb-16 text-center text-white md:pb-20">
+          <h1 className="font-serif text-[12vw] leading-none font-medium tracking-[0.02em] md:text-8xl lg:text-9xl">
+            STUDIO PIER 88
+          </h1>
+          <p className="mt-2 font-serif text-2xl italic md:text-4xl">Espaço para criar sem limites</p>
         </div>
       </section>
 
-      <BrandMarquee />
+      {/* Espaço ocupado pela faixa amarela, que no hero fica logo abaixo da imagem. */}
+      <div className="h-[var(--header-h)]" aria-hidden />
 
-      {/* MANIFESTO */}
-      <section className="mx-auto max-w-7xl px-5 pb-28 pt-16 md:px-10 md:pb-40 md:pt-20">
-        <div className="grid gap-12 md:grid-cols-12">
-          <Reveal className="md:col-span-4">
-            <p className="text-[12px] tracking-[0.35em] uppercase text-brass">O estúdio</p>
-          </Reveal>
-          <Reveal className="md:col-span-8" delay={100}>
-            <p className="font-display text-4xl leading-[1.1] md:text-6xl">
-              Nascemos no mundo da moda para resolver um problema simples: faltavam estúdios{" "}
-              <em className="text-stone">à altura</em> de quem produz imagem de verdade.
-            </p>
-            <div className="mt-12 grid grid-cols-3 gap-6 border-t border-line pt-8">
-              {[
-                ["06", "estúdios"],
-                ["∞", "possibilidades"],
-                ["NY", "como inspiração"],
-              ].map(([n, l]) => (
-                <div key={l}>
-                  <p className="font-display text-5xl italic text-brass md:text-6xl">{n}</p>
-                  <p className="mt-2 text-[11px] tracking-[0.25em] uppercase text-stone">{l}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
+      <section className="mx-auto max-w-5xl px-6 py-16 md:px-10 md:py-24">
+        <h2 className="font-serif text-3xl font-semibold md:text-4xl">Espaço para criar sem limites</h2>
+        <p className="mt-4 max-w-xl font-serif text-lg leading-relaxed">{manifesto}</p>
+      </section>
+
+      <section className="relative flex min-h-[72vh] items-end overflow-hidden bg-[#8d8d8d]">
+        <CyclingPhotos images={heroImages} alt="Espaços do Studio Pier 88" />
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="relative z-10 w-full px-6 pb-12 md:px-16 md:pb-16">
+          <p className="max-w-4xl font-serif text-4xl leading-none text-white md:text-7xl">
+            Luz natural, pé-direito e espaço de sobra.
+          </p>
+          <Link href="/studio" className={`${btn} mt-8`}>
+            Conheça os estúdios
+          </Link>
         </div>
       </section>
 
-      {/* DESTAQUE FOTO */}
-      <section className="relative h-[80vh] min-h-[480px] overflow-hidden">
-        <img src="/images/escada.jpg" alt="Estrutura do Studio Pier 88" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/30 to-transparent" />
-        <div className="relative mx-auto flex h-full max-w-7xl items-center px-5 md:px-10">
-          <Reveal className="max-w-lg">
-            <p className="mb-5 text-[12px] tracking-[0.35em] uppercase text-brass">Estrutura</p>
-            <h2 className="font-display text-5xl leading-none md:text-7xl">
-              Luz natural, <em>pé-direito</em> e espaço de sobra.
-            </h2>
-            <Link href="/studio" className="mt-8 inline-block border-b border-paper/50 pb-1 text-[12px] tracking-[0.25em] uppercase hover:border-paper">
-              Conheça os estúdios
+      <div className="h-8 bg-[#e6e6e6]" aria-hidden />
+
+      <section className="relative min-h-[68vh] overflow-hidden bg-[#8d8d8d]">
+        <CyclingPhotos images={[...heroImages].reverse()} alt="Ativações no Studio Pier 88" interval={6500} />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 flex min-h-[68vh] w-full flex-col justify-between gap-16 px-6 py-10 md:px-16 md:py-14">
+          <p className="max-w-xl font-serif text-base leading-relaxed text-white md:text-lg">{manifesto}</p>
+          <div>
+            <p className="max-w-4xl font-serif text-4xl leading-none text-white md:text-7xl">
+              Lançamentos, desfiles e exposições.
+            </p>
+            <Link href="/eventos" className={`${btn} mt-8`}>
+              Ver os eventos
             </Link>
-          </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* ESTÚDIOS */}
-      <section className="mx-auto max-w-7xl px-5 py-28 md:px-10 md:py-36">
-        <Reveal className="mb-14 flex items-end justify-between gap-6">
-          <h2 className="font-display text-5xl md:text-7xl">
-            Nossos <em>estúdios</em>
+      <section className="px-6 py-20 md:px-16 md:py-28" aria-label="Marcas que já confiaram">
+        <div className="mx-auto grid max-w-[1400px] items-end gap-10 md:grid-cols-2">
+          <h2 className="flex flex-wrap items-end gap-x-4 gap-y-1 font-serif leading-none">
+            <span className="text-6xl font-medium md:text-8xl">MARCAS</span>
+            <span className="pb-1 text-3xl italic md:text-5xl">
+              que já
+              <br />
+              confiaram
+            </span>
           </h2>
-          <Link href="/studio" className="hidden text-[12px] tracking-[0.25em] uppercase text-stone hover:text-paper md:block">
-            Ver todos →
-          </Link>
-        </Reveal>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {estudios.map((e, i) => (
-            <Reveal key={e.id} delay={(i % 3) * 120}>
-              <Link href={`/studio#${e.id}`} className="group block">
-                <div className="aspect-[4/5] overflow-hidden bg-ink-2">
-                  <img src={e.img} alt={e.nome} className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" />
-                </div>
-                <div className="mt-4 flex items-baseline justify-between">
-                  <p className="font-display text-3xl italic">{e.nome}</p>
-                  <span className="text-stone transition-transform group-hover:translate-x-1">→</span>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+          <p className="max-w-md font-serif text-lg leading-relaxed">{manifesto}</p>
         </div>
+        <BrandMarquee />
       </section>
 
-      {/* EVENTOS - lista com hover */}
-      <section className="border-y border-line bg-ink-2">
-        <div className="mx-auto max-w-7xl px-5 py-28 md:px-10 md:py-36">
-          <Reveal className="mb-14">
-            <p className="mb-5 text-[12px] tracking-[0.35em] uppercase text-brass">Eventos realizados</p>
-            <h2 className="font-display text-5xl md:text-7xl">
-              Marcas que já <em>passaram</em> por aqui.
-            </h2>
-          </Reveal>
-          <ul>
-            {eventos.map((ev) => (
-              <li key={ev.id}>
-                <Link
-                  href={`/eventos#${ev.id}`}
-                  className="group flex items-center justify-between gap-6 border-t border-line py-6 transition-colors hover:text-brass"
-                >
-                  <span className="font-display text-3xl md:text-5xl">{ev.nome}</span>
-                  <span className="hidden text-[12px] tracking-[0.25em] uppercase text-stone md:block">{ev.sub}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link href="/eventos" className="mt-10 inline-block border-b border-paper/50 pb-1 text-[12px] tracking-[0.25em] uppercase hover:border-paper">
-            Todos os eventos
-          </Link>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="mx-auto max-w-7xl px-5 pb-32 pt-10 text-center md:px-10">
-        <Reveal>
-          <h2 className="font-display text-6xl leading-none md:text-9xl">
-            Vamos <em>criar</em> juntos?
-          </h2>
-          <Link
-            href="/contato"
-            className="mt-12 inline-flex items-center gap-4 rounded-full bg-brass px-10 py-5 text-[12px] font-medium tracking-[0.25em] uppercase text-ink transition-colors hover:bg-paper"
-          >
-            Entrar em contato <span>→</span>
-          </Link>
-        </Reveal>
+      <section className="px-6 pb-28 pt-6 text-center md:pb-36">
+        <h2 className="font-serif text-5xl leading-none font-medium md:text-7xl lg:text-8xl">VAMOS CRIAR JUNTOS?</h2>
+        <Link href="/contato" className={`${btn} mt-10`}>
+          Entrar em contato
+        </Link>
       </section>
     </>
   );

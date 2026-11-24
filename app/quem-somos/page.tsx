@@ -35,7 +35,7 @@ export default function QuemSomosPage() {
           <Reveal className="md:col-span-4">
             <h2 className="font-display text-5xl italic">História</h2>
           </Reveal>
-          <Reveal className="space-y-6 text-lg leading-relaxed text-paper/75 md:col-span-8" delay={120}>
+          <Reveal className="space-y-6 font-serif text-lg leading-relaxed md:col-span-8" delay={120}>
             <p>
               O Studio Pier 88 surgiu quando seus fundadores perceberam que muitos profissionais da moda estavam
               insatisfeitos com os estúdios disponíveis: era difícil conseguir horário e as condições dos espaços
@@ -54,10 +54,10 @@ export default function QuemSomosPage() {
           </Reveal>
           <div className="grid gap-px bg-line sm:grid-cols-2">
             {diferenciais.map(([t, d], i) => (
-              <Reveal key={t} delay={(i % 2) * 120} className="bg-ink p-8 md:p-12">
-                <p className="font-display text-xl italic text-brass">{String(i + 1).padStart(2, "0")}</p>
-                <h3 className="mt-4 font-display text-3xl md:text-4xl">{t}</h3>
-                <p className="mt-4 leading-relaxed text-paper/70">{d}</p>
+              <Reveal key={t} delay={(i % 2) * 120} className="bg-[#d4d4d4] p-8 md:p-12">
+                <p className="font-serif text-xl">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 font-serif text-3xl md:text-4xl">{t}</h3>
+                <p className="mt-4 font-serif leading-relaxed">{d}</p>
               </Reveal>
             ))}
           </div>
@@ -70,7 +70,7 @@ export default function QuemSomosPage() {
             ["Valores", "Pontualidade, organização, respeito, honestidade e ética."],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 120}>
-              <p className="text-[12px] tracking-[0.35em] uppercase text-brass">{t}</p>
+              <p className="font-sans text-[12px] tracking-[0.2em] uppercase">{t}</p>
               <p className="mt-5 font-display text-3xl leading-snug">{d}</p>
             </Reveal>
           ))}

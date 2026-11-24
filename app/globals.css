@@ -2,14 +2,18 @@
 
 @theme {
   /* Paleta da logo: preto, off-white e o amarelo #f8c800 só como acento. */
-  --color-ink: #000000;
-  --color-ink-2: #121212;
-  --color-paper: #f3f3f1;
-  --color-stone: #9a9a96;
-  --color-line: #262626;
+  /* Visual do material do designer: página clara, faixa amarela, texto preto.
+     As cores finais chegam depois; estes são os tons do PDF. */
+  --color-ink: #141414;
+  --color-ink-2: #d4d4d4;
+  --color-paper: #e6e6e6;
+  --color-stone: #3f3f3f;
+  --color-line: #c8c8c8;
   --color-brass: #f8c800;
+  --color-footer: #8d8d8d;
 
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-display: "EB Garamond", ui-serif, Georgia, serif;
+  --font-serif: "EB Garamond", ui-serif, Georgia, serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -23,9 +27,9 @@ html {
 }
 
 body {
-  background: var(--color-ink);
-  color: var(--color-paper);
-  font-family: var(--font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-serif);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -53,24 +57,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .brand-marquee-track { animation: none; }
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.brand-marquee-track {
-  animation: marquee 32s linear infinite;
-}
-
-.group:hover .brand-marquee-track {
-  animation-play-state: paused;
-}
 
 .brand-marquee-fade {
   mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);

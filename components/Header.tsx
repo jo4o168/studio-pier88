@@ -8,42 +8,43 @@ import { nav } from "@/lib/content";
 
 export default function Header() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [open, setOpen] = useState(false);
+  const onHome = pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setPastHero(window.scrollY >= window.innerHeight - 1);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => setOpen(false), [pathname]);
 
-  // Na home o header começa transparente sobre o vídeo/slideshow
-  const solid = scrolled || pathname !== "/" || open;
+  // Na home a faixa fica logo abaixo do hero e gruda no topo quando a rolagem chega nela.
+  const stuck = !onHome || pastHero || open;
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 h-[var(--header-h)] transition-colors duration-500 ${
-        solid ? "bg-ink/90 backdrop-blur-md border-b border-line" : "bg-transparent"
+      className={`z-50 bg-[#f8c800] text-black ${
+        stuck ? "fixed inset-x-0 top-0" : "absolute inset-x-0 top-[100dvh]"
       }`}
     >
-      <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-5 md:px-10">
-        <Link href="/" className="flex items-center" aria-label="Studio Pier 88">
-          <img src="/brand/logo.png" alt="" className="h-8 w-auto md:h-10" />
+      <div className="mx-auto flex h-[var(--header-h)] max-w-[1400px] items-center gap-6 px-5 md:px-10">
+        <Link href="/" className="inline-flex shrink-0 items-center" aria-label="Studio Pier 88">
+          <img src="/brand/logo-header.png" alt="" className="h-8 w-auto md:h-10" />
         </Link>
 
-        <nav className="hidden lg:block">
-          <ul className="flex items-center gap-8">
+        <nav className="ml-auto hidden md:block">
+          <ul className="flex items-center gap-7">
             {nav.map((item) => {
               const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`text-[12px] font-medium tracking-[0.22em] uppercase transition-colors ${
-                      active ? "text-brass" : "text-paper/70 hover:text-paper"
+                    className={`font-sans text-[13px] uppercase tracking-[0.08em] ${
+                      active ? "font-bold" : "font-medium hover:opacity-60"
                     }`}
                   >
                     {item.label}
@@ -55,7 +56,7 @@ export default function Header() {
         </nav>
 
         <button
-          className="lg:hidden text-[12px] tracking-[0.22em] uppercase text-paper"
+          className="ml-auto font-sans text-[12px] font-semibold tracking-[0.14em] uppercase md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Abrir menu"
@@ -65,11 +66,11 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav className="lg:hidden border-t border-line bg-ink h-[calc(100dvh-var(--header-h))]">
-          <ul className="flex flex-col gap-2 px-5 pt-10">
+        <nav className="border-t border-black/10 bg-[#f8c800] md:hidden">
+          <ul className="flex flex-col gap-1 px-5 py-6">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="font-display text-5xl italic text-paper">
+                <Link href={item.href} className="block py-2 font-serif text-4xl">
                   {item.label}
                 </Link>
               </li>

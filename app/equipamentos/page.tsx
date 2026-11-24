@@ -23,7 +23,7 @@ export default function EquipamentosPage() {
         {equipamentos.map((cat, i) => (
           <section key={cat.id} id={cat.id} className="anchor grid gap-10 border-b border-line py-20 md:grid-cols-12 md:py-28">
             <Reveal className="md:col-span-5">
-              <p className="font-display text-xl italic text-brass">{String(i + 1).padStart(2, "0")}</p>
+              <p className="font-serif text-xl">{String(i + 1).padStart(2, "0")}</p>
               <h2 className="mt-3 font-display text-5xl leading-none md:text-6xl">{cat.nome}</h2>
             </Reveal>
             <Reveal className="md:col-span-7" delay={120}>
@@ -39,7 +39,7 @@ export default function EquipamentosPage() {
           </section>
         ))}
         <div className="py-20 text-center">
-          <Link href="/contato" className="inline-flex items-center gap-4 rounded-full bg-brass px-10 py-5 text-[12px] font-medium tracking-[0.25em] uppercase text-ink transition-colors hover:bg-paper">
+          <Link href="/contato" className="inline-flex items-center gap-4 bg-black px-8 py-4 font-sans text-[12px] font-medium tracking-[0.16em] uppercase text-white hover:bg-neutral-800">
             Consultar disponibilidade <span>→</span>
           </Link>
         </div>

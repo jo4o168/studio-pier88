@@ -24,14 +24,14 @@ export default function HeroSlideshow({ images }: { images: string[] }) {
           }`}
         />
       ))}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/20 to-ink" />
-      <div className="absolute bottom-8 right-5 flex gap-2 md:right-10">
+      <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute bottom-8 right-5 z-10 flex gap-2 md:right-10">
         {images.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
             aria-label={`Foto ${i + 1}`}
-            className={`h-px w-8 transition-colors ${i === index ? "bg-paper" : "bg-paper/30"}`}
+            className={`h-px w-8 transition-colors ${i === index ? "bg-white" : "bg-white/40"}`}
           />
         ))}
       </div>

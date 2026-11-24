@@ -1,32 +1,25 @@
-/* eslint-disable @next/next/no-img-element */
 import Reveal from "./Reveal";
 
+/** Abertura das páginas que o material não desenhou: mesmo fundo claro e a mesma serif. */
 export default function PageHero({
-  kicker,
   title,
   italic,
   text,
-  image,
 }: {
-  kicker: string;
+  kicker?: string;
   title: string;
   italic?: string;
   text?: string;
-  image: string;
+  image?: string;
 }) {
   return (
-    <section className="relative flex min-h-[72vh] items-end overflow-hidden pt-[var(--header-h)]">
-      <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-55" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10" />
-      <div className="relative mx-auto w-full max-w-7xl px-5 pb-14 md:px-10 md:pb-20">
-        <Reveal>
-          <p className="mb-5 text-[12px] tracking-[0.35em] uppercase text-brass">{kicker}</p>
-          <h1 className="font-display text-6xl leading-[0.95] md:text-8xl lg:text-9xl">
-            {title} {italic && <em className="text-paper/80">{italic}</em>}
-          </h1>
-          {text && <p className="mt-8 max-w-xl text-base leading-relaxed text-paper/70 md:text-lg">{text}</p>}
-        </Reveal>
-      </div>
+    <section className="mx-auto max-w-5xl px-6 pt-14 pb-4 md:px-10 md:pt-20">
+      <Reveal>
+        <h1 className="font-serif text-5xl leading-none font-medium md:text-7xl">
+          {title} {italic && <em>{italic}</em>}
+        </h1>
+        {text && <p className="mt-6 max-w-xl font-serif text-lg leading-relaxed">{text}</p>}
+      </Reveal>
     </section>
   );
 }

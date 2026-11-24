@@ -1,42 +1,49 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import PageHero from "@/components/PageHero";
 import SubNav from "@/components/SubNav";
-import Reveal from "@/components/Reveal";
-import { capas, eventos } from "@/lib/content";
+import { eventos } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Eventos · Studio Pier 88" };
 
 export default function EventosPage() {
   return (
     <>
-      <PageHero
-        kicker="Eventos"
-        title="Lançamentos, desfiles"
-        italic="e exposições."
-        text="Nossos espaços já receberam eventos de algumas das maiores marcas do mundo. Conheça alguns deles."
-        image={capas.eventos}
-      />
-      <SubNav items={eventos.map((e) => ({ id: e.id, label: e.nome }))} />
+      <section className="mx-auto max-w-5xl px-6 py-14 md:px-10 md:py-20">
+        <h1 className="font-serif text-3xl font-semibold md:text-4xl">Lançamentos, desfiles e exposições.</h1>
+        <p className="mt-4 max-w-xl font-serif text-lg leading-relaxed">
+          Nossos espaços já receberam eventos de algumas das maiores marcas do mundo. Conheça alguns deles.
+        </p>
+      </section>
 
-      <div className="mx-auto max-w-7xl px-5 md:px-10">
-        {eventos.map((ev, i) => (
-          <section key={ev.id} id={ev.id} className="anchor grid gap-10 border-b border-line py-20 md:grid-cols-12 md:py-28">
-            <Reveal className={`md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
-              <div className="aspect-[4/3] overflow-hidden bg-ink-2">
-                <img src={ev.img} alt={ev.nome} className="h-full w-full object-cover" />
+      <SubNav
+        items={eventos.map((e, i) => ({
+          id: e.id,
+          label: `${String(i + 1).padStart(2, "0")}. ${e.nome}`,
+        }))}
+      />
+
+      <div className="mx-auto max-w-[1400px] px-6 pb-20 md:px-10">
+        {eventos.map((ev, i) => {
+          const fotos = ev.imagens.slice(0, 2);
+          return (
+            <section key={ev.id} id={ev.id} className="anchor py-14 md:py-20">
+              <div className="grid items-end gap-6 md:grid-cols-12">
+                <h2 className="font-serif text-5xl leading-none font-medium md:col-span-7 md:text-7xl lg:text-8xl">
+                  <span className="mr-3 align-top text-3xl md:text-5xl">{String(i + 1).padStart(2, "0")}</span>
+                  {ev.nome}
+                </h2>
+                <p className="font-serif text-lg leading-relaxed md:col-span-5">{ev.texto}</p>
               </div>
-            </Reveal>
-            <Reveal className="flex flex-col justify-end md:col-span-5" delay={120}>
-              <p className="font-display text-xl italic text-brass">{String(i + 1).padStart(2, "0")}</p>
-              <h2 className="mt-3 font-display text-5xl leading-none md:text-6xl">{ev.nome}</h2>
-              <p className="mt-4 text-[12px] tracking-[0.25em] uppercase text-stone">{ev.sub}</p>
-              <p className="mt-6 max-w-md leading-relaxed text-paper/70">
-                Texto do evento A DEFINIR: data, formato, estúdio utilizado e número de convidados.
-              </p>
-            </Reveal>
-          </section>
-        ))}
+              {fotos.length > 0 && (
+                <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                  {fotos.map((src) => (
+                    <img key={src} src={src} alt={ev.nome} className="aspect-[16/10] w-full object-cover" />
+                  ))}
+                </div>
+              )}
+            </section>
+          );
+        })}
       </div>
     </>
   );

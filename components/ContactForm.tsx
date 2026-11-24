@@ -91,7 +91,7 @@ export default function ContactForm() {
   };
 
   const field =
-    "w-full border-0 border-b border-line bg-transparent py-3 text-paper placeholder:text-stone/70 focus:border-brass focus:outline-none focus:ring-0 transition-colors";
+    "w-full border-0 border-b border-black/30 bg-transparent py-3 font-serif text-lg text-black placeholder:text-black/40 focus:border-black focus:outline-none focus:ring-0 transition-colors";
   const label = "block text-[11px] tracking-[0.3em] uppercase text-stone";
 
   return (
@@ -119,7 +119,7 @@ export default function ContactForm() {
       </div>
       <div>
         <label className={label} htmlFor="origem">Como nos conheceu?</label>
-        <select id="origem" value={d.origem} onChange={set("origem")} className={`${field} [&>option]:bg-ink`}>
+        <select id="origem" value={d.origem} onChange={set("origem")} className={`${field} [&>option]:bg-[#e6e6e6]`}>
           {formularioContato.origens.map((o) => <option key={o}>{o}</option>)}
         </select>
       </div>
@@ -144,7 +144,7 @@ export default function ContactForm() {
         <p className="text-sm text-stone">
           {enviado ? "Abrimos o WhatsApp com a sua mensagem. É só tocar em enviar." : "Ao enviar, você será direcionado ao nosso WhatsApp."}
         </p>
-        <button type="submit" className="group inline-flex items-center gap-4 self-start rounded-full bg-brass px-8 py-4 text-[12px] font-medium tracking-[0.25em] uppercase text-ink transition-colors hover:bg-paper">
+        <button type="submit" className="group inline-flex items-center gap-4 self-start bg-black px-8 py-4 font-sans text-[12px] font-medium tracking-[0.16em] uppercase text-white hover:bg-neutral-800">
           Enviar
           <span className="transition-transform group-hover:translate-x-1">→</span>
         </button>
