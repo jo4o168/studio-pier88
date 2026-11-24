@@ -38,7 +38,7 @@ function Card({
 
   return (
     <article id={item.id} className="anchor relative aspect-[16/10] overflow-hidden bg-[#8d8d8d]">
-      <button type="button" onClick={() => onOpen(index)} className="absolute inset-0 z-0" aria-label={`Ampliar ${item.nome}`}>
+      <button type="button" onClick={() => onOpen(index)} className="absolute inset-0 z-0 cursor-zoom-in" aria-label={`Ampliar ${item.nome}`}>
         {item.imagens.map((src, i) => (
           <img
             key={src}
@@ -136,7 +136,7 @@ export default function StudioGrid({
           <ul className="grid grid-cols-2 gap-3 md:col-span-8">
             {aberto.imagens.map((src, i) => (
               <li key={src}>
-                <button type="button" onClick={() => setLightbox({ id: aberto.id, index: i })} className="block w-full" aria-label={`${aberto.nome}, miniatura ${i + 1}`}>
+                <button type="button" onClick={() => setLightbox({ id: aberto.id, index: i })} className="block w-full cursor-zoom-in" aria-label={`${aberto.nome}, miniatura ${i + 1}`}>
                   <img src={src} alt="" className="aspect-[4/3] w-full object-cover" />
                 </button>
               </li>
